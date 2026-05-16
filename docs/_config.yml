@@ -1,0 +1,5 @@
+theme: jekyll-theme-cayman
+title: Rabiraag Keyboard
+description: A native Windows Bengali (India) Inscript keyboard layout that just works.
+repository_url: https://github.com/bonanto/rabiraag
+show_downloads: true

@@ -1,0 +1,34 @@
+#include <windows.h>
+
+// Version resource - shows in File Properties > Details tab
+// AV engines use this to assess legitimacy
+
+VS_VERSION_INFO VERSIONINFO
+FILEVERSION      3,0,0,1
+PRODUCTVERSION   3,0,0,1
+FILEFLAGSMASK    VS_FFI_FILEFLAGSMASK
+FILEFLAGS        0
+FILEOS           VOS_NT_WINDOWS32
+FILETYPE         VFT_APP
+FILESUBTYPE      VFT2_UNKNOWN
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904B0"  // Language: English (US), Codepage: Unicode
+        BEGIN
+            VALUE "CompanyName",      "Habitat Whisper\0"
+            VALUE "FileDescription",  "Rabiraag Bangla Keyboard - AltGr Fix Helper\0"
+            VALUE "FileVersion",      "3.0.0.1\0"
+            VALUE "InternalName",     "rabiraag_helper\0"
+            VALUE "LegalCopyright",   "(c) 2026 Shyamal Kr Biswas (Bonanto), Habitat Whisper\0"
+            VALUE "OriginalFilename", "rabiraag_helper.exe\0"
+            VALUE "ProductName",      "Rabiraag Bangla Keyboard\0"
+            VALUE "ProductVersion",   "3.0\0"
+            VALUE "Comments",         "Fixes AltGr key interception in Office 365 / Windows 11. Uses WH_KEYBOARD_LL to intercept Ctrl+Alt combinations that Office would otherwise steal from the Rabiraag Bengali keyboard layout.\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x0409, 0x04B0
+    END
+END

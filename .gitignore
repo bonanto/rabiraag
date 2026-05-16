@@ -1,0 +1,5 @@
+# Ignore the compiled installer and all executables
+Release/
+*.exe
+*.o
+*.pfx

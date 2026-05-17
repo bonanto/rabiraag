@@ -1,4 +1,16 @@
+---
+layout: default
+title: Rabiraag Keyboard - Changelogs
+---
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;700&display=swap');
+  body, p, li, h1, h2, h3, h4, h5, h6, table, td, th {
+    font-family: "Open Sans", "Noto Sans Bengali", sans-serif !important;
+  }
+</style>
+
 [← Back to Home](./)
+<br>
 
 # Changelog
 

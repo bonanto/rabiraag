@@ -218,9 +218,11 @@ While MSKLC can generate installers, they are outdated and unreliable on Windows
 7. Once completed, a new `Output` folder will appear in `C:\Compile` containing your final Setup executable.
 
 ---
+
 ## 📌 Legal & Support
-* [📬 Contact & Support](Contact.md)
-* [🛡️ Privacy Policy](Privacy_Policy.md)
+*[📬 Contact & Support](Contact.html)
+*[🛡️ Privacy Policy](Privacy_Policy.html)
+
 ---
 
 ## 📸 Keyboard Layouts

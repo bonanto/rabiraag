@@ -43,9 +43,9 @@ Unlike other Bengali typing tools, Rabiraag does **not** install a heavy third-p
 
 ## 🚀 Installation
 
-The latest release provides a professional standalone installer for a faster, one-step setup.
+The latest release provides a professional standalone installer for a faster, one-step setup. See [Changelog]((Documentation/CHANGELOG.md).
 
-1. **Download the Release:** Download the latest Rabiraag_v3_Setup.exe from the [Releases](https://github.com/bonanto/rabiraag/releases) page
+1. **Download the Release:** Download the latest Setup.exe from the [Releases](https://github.com/bonanto/rabiraag/releases) page
 2. **Run the Setup:** Double-click the installer. If Windows SmartScreen displays an "Unknown Publisher" warning, click **"More info"** and then **"Run anyway."** (See Security & Verification below for a permanent fix).
 3. **Finish:** The installer handles all registry settings, native DLL placement, and font installation automatically.
 4. **Done:** It installs in a blink!
@@ -82,9 +82,8 @@ To seamlessly bypass this limitation, Rabiraag v3 includes an ultra-lightweight,
 
 To ensure that your download is authentic and has not been tampered with, you can verify its cryptographic SHA-256 hash.
 
-* **File:** `Rabiraag_v3_Setup.exe`
-* **Official SHA-256 Hash:** `1054eb4ba3c3c570df93039911d905f03fc72db93e2bd8c79a1de7284728af02
-`
+* **Latest File:** `Rabiraag_v3.0.1_Setup.exe`
+* **Official SHA-256 Hash:** `b1d2a79564bb96d2b5950d8d2c5d33903f0cb157efab70061f29368d632c50c9`
 
 **How to verify on your machine:**
 1. Open **Windows PowerShell**.

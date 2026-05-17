@@ -7,17 +7,25 @@
 **Rabiraag** is a highly optimized, native Bengali (Bangla) Inscript keyboard layout for Windows, developed by **Bonanto**. Originally created in 2008 and tested over 17 years across every Windows version from XP to Windows 11, this keyboard layout provides a seamless, zero-bloat Bengali typing experience.
 
 <div style="text-align: center; margin-top: 20px; margin-bottom: 40px;">
-  <a href="https://github.com/bonanto/rabiraag/releases/download/v3.0.0/Rabiraag_v3_Setup.exe" style="display: inline-block; padding: 15px 30px; background-color: #159957; background-image: linear-gradient(120deg, #155799, #159957); color: white; text-decoration: none; font-size: 1.2rem; font-weight: bold; border-radius: 5px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-    ↓ Download Rabiraag v3.0.0
-  </a>
-<br>
-  <a href="Typing_Guide.html" style="display: inline-block; padding: 10px 20px; margin-right: 5px; margin-top: 20px; color: #159957; border: 2px solid #159957; text-decoration: none; font-size: 1rem; font-weight: bold; border-radius: 5px; background-color: transparent;">
+  
+  <div style="margin-bottom: 20px;">
+    <a href="https://github.com/bonanto/rabiraag/releases/download/v3.0.1/Rabiraag_v3.0.1_Setup.exe" style="display: inline-block; padding: 15px 30px; background-color: #159957; background-image: linear-gradient(120deg, #155799, #159957); color: white; text-decoration: none; font-size: 1.2rem; font-weight: bold; border-radius: 5px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); vertical-align: middle;">
+      ↓ Download Rabiraag Latest (3.0.1)
+    </a>
+    
+    <a href="CHANGELOG.html" style="display: inline-block; padding: 13px 20px; margin-left: 10px; color: #159957; border: 2px solid #159957; text-decoration: none; font-size: 1.1rem; font-weight: bold; border-radius: 5px; background-color: transparent; vertical-align: middle;">
+      📝 Changelog
+    </a>
+  </div>
+
+  <a href="Typing_Guide.html" style="display: inline-block; padding: 10px 20px; margin-right: 5px; color: #159957; border: 2px solid #159957; text-decoration: none; font-size: 1rem; font-weight: bold; border-radius: 5px; background-color: transparent;">
     📖 Read Typing Guide
   </a>
-  <a href="KEY_MAPPINGS.html" style="display: inline-block; padding: 10px 20px; margin-left: 5px; margin-top: 20px; color: #159957; border: 2px solid #159957; text-decoration: none; font-size: 1rem; font-weight: bold; border-radius: 5px; background-color: transparent;">
+  <a href="KEY_MAPPINGS.html" style="display: inline-block; padding: 10px 20px; margin-left: 5px; color: #159957; border: 2px solid #159957; text-decoration: none; font-size: 1rem; font-weight: bold; border-radius: 5px; background-color: transparent;">
     ⌨️ View Key Mappings
   </a>
 </div>
+
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;700&display=swap');
   body, p, li, h1, h2, h3, h4, h5, h6, table, td, th {
@@ -102,9 +110,8 @@ To seamlessly bypass this limitation, Rabiraag v3 includes an ultra-lightweight,
 
 To ensure that your download is authentic and has not been tampered with, you can verify its cryptographic SHA-256 hash.
 
-* **File:** `Rabiraag_v3_Setup.exe`
-* **Official SHA-256 Hash:** `1054eb4ba3c3c570df93039911d905f03fc72db93e2bd8c79a1de7284728af02
-`
+* **Latest File:** `Rabiraag_v3.0.1_Setup.exe`
+* **Official SHA-256 Hash:** `b1d2a79564bb96d2b5950d8d2c5d33903f0cb157efab70061f29368d632c50c9`
 
 **How to verify on your machine:**
 1. Open **Windows PowerShell**.
@@ -210,6 +217,10 @@ While MSKLC can generate installers, they are outdated and unreliable on Windows
 6. Press **Ctrl+F9** to build. 
 7. Once completed, a new `Output` folder will appear in `C:\Compile` containing your final Setup executable.
 
+---
+## 📌 Legal & Support
+* [📬 Contact & Support](Contact.md)
+* [🛡️ Privacy Policy](Privacy_Policy.md)
 ---
 
 ## 📸 Keyboard Layouts

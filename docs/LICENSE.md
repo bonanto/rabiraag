@@ -15,7 +15,7 @@ Copyright (c) 2026 Shyamal Kr Biswas (Bonanto) / Habitat Whisper. All Rights Res
 
 **1. Grant of License & Authorship** The underlying keyboard layout structure (the `.klc` file mapping) is the original intellectual property and creation of the author. The author grants you a non-exclusive, non-transferable, and royalty-free license to download, install, and use the Rabiraag Bangla Keyboard software ("the Software") for personal, educational, or professional purposes.
 
-**2. Redistribution & Bundling** Anyone is free to download, use as-is, copy, and distribute the original, unmodified compiled Software (`Rabiraag_v3_Setup.exe`). You may also bundle this software with other free software distributions. 
+**2. Redistribution & Bundling** Anyone is free to download, use as-is, copy, and distribute the original, unmodified compiled Software (`Rabiraag_v3.x.x_Setup.exe`). You may also bundle this software with other free software distributions. 
 * **Condition for Bundling:** If you bundle this Software with any other distribution, you MUST clearly credit the original author ("Shyamal Kr Biswas (Bonanto) / Habitat Whisper") and provide a link back to the official repository. 
 
 **3. Split Licensing & Source Code Transparency** The source code for the Software is made publicly available strictly for transparency, educational review, and security verification.  

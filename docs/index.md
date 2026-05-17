@@ -6,27 +6,27 @@
 
 **Rabiraag** is a highly optimized, native Bengali (Bangla) Inscript keyboard layout for Windows, developed by **Bonanto**. Originally created in 2008 and tested over 17 years across every Windows version from XP to Windows 11, this keyboard layout provides a seamless, zero-bloat Bengali typing experience.
 
-<div style="text-align: center; margin-top: 20px; margin-bottom: 40px;">
+<div style="display: flex; flex-direction: column; align-items: center; gap: 15px; margin-top: 20px; margin-bottom: 40px;">
   
-  <div style="margin-bottom: 20px;">
-    <a href="https://github.com/bonanto/rabiraag/releases/download/v3.0.1/Rabiraag_v3.0.1_Setup.exe" style="display: inline-block; padding: 15px 30px; background-color: #159957; background-image: linear-gradient(120deg, #155799, #159957); color: white; text-decoration: none; font-size: 1.2rem; font-weight: bold; border-radius: 5px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); vertical-align: middle;">
+  <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;">
+    <a href="https://github.com/bonanto/rabiraag/releases/download/v3.0.1/Rabiraag_v3.0.1_Setup.exe" style="display: flex; align-items: center; justify-content: center; padding: 12px 25px; background-color: #159957; background-image: linear-gradient(120deg, #155799, #159957); color: white; text-decoration: none; font-size: 1.1rem; font-weight: bold; border-radius: 5px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); box-sizing: border-box;">
       ↓ Download Rabiraag Latest (3.0.1)
     </a>
     
-    <a href="CHANGELOG.html" style="display: inline-block; padding: 13px 20px; margin-left: 10px; color: #159957; border: 2px solid #159957; text-decoration: none; font-size: 1.1rem; font-weight: bold; border-radius: 5px; background-color: transparent; vertical-align: middle;">
+    <a href="CHANGELOG.html" style="display: flex; align-items: center; justify-content: center; padding: 10px 20px; color: #159957; border: 2px solid #159957; text-decoration: none; font-size: 1rem; font-weight: bold; border-radius: 5px; background-color: transparent; box-sizing: border-box;">
       📝 Changelog
     </a>
   </div>
 
-  <a href="Typing_Guide.html" style="display: inline-block; padding: 10px 20px; margin-right: 5px; color: #159957; border: 2px solid #159957; text-decoration: none; font-size: 1rem; font-weight: bold; border-radius: 5px; background-color: transparent;">
-    📖 Read Typing Guide
-  </a>
-  <a href="KEY_MAPPINGS.html" style="display: inline-block; padding: 10px 20px; margin-left: 5px; color: #159957; border: 2px solid #159957; text-decoration: none; font-size: 1rem; font-weight: bold; border-radius: 5px; background-color: transparent;">
-    ⌨️ View Key Mappings
-  </a>
+  <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;">
+    <a href="Typing_Guide.html" style="display: flex; align-items: center; justify-content: center; padding: 8px 15px; color: #159957; border: 2px solid #159957; text-decoration: none; font-size: 0.95rem; font-weight: bold; border-radius: 5px; background-color: transparent; width: 230px; box-sizing: border-box;">
+      📖 Read Typing Guide
+    </a>
+    <a href="KEY_MAPPINGS.html" style="display: flex; align-items: center; justify-content: center; padding: 8px 15px; color: #159957; border: 2px solid #159957; text-decoration: none; font-size: 0.95rem; font-weight: bold; border-radius: 5px; background-color: transparent; width: 230px; box-sizing: border-box;">
+      ⌨️ View Key Mappings
+    </a>
+  </div>
 </div>
-
-<style>
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;700&display=swap');
   body, p, li, h1, h2, h3, h4, h5, h6, table, td, th {
     font-family: "Open Sans", "Noto Sans Bengali", sans-serif !important;

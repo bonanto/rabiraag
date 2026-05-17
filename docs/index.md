@@ -220,8 +220,8 @@ While MSKLC can generate installers, they are outdated and unreliable on Windows
 ---
 
 ## 📌 Legal & Support
-*[📬 Contact & Support](Contact.html)
-*[🛡️ Privacy Policy](Privacy_Policy.html)
+* [📬 Contact & Support](Contact.html)<br>
+* [🛡️ Privacy Policy](Privacy_Policy.html)
 
 ---
 

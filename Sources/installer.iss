@@ -1,25 +1,25 @@
 ; ############################################################################
-; Rabiraag Bangla Keyboard v3.0 Installer
-; Created for Habitat Whisper by Bonanto
+; Rabiraag Bangla Keyboard v3.0.1 Installer
+; Developed by Bonanto | Published by Habitat Whisper
 ; Dedicated to Her
 ; ############################################################################
 
 [Setup]
 AppId=RabiraagKeyboard_v3
 AppName=Rabiraag Bangla Keyboard
-AppVersion=3.0
+AppVersion=3.0.1
 AppPublisher=Habitat Whisper
-VersionInfoVersion=3.0.0.0
+VersionInfoVersion=3.0.1.0
 VersionInfoCompany=Habitat Whisper
-VersionInfoDescription=Rabiraag Bangla Keyboard Installer
+VersionInfoDescription=Rabiraag Bangla Keyboard Installer (Experience Build 6202.5071.0)
 VersionInfoCopyright=(c) 2026 Shyamal Kr Biswas (Bonanto), Habitat Whisper
 VersionInfoProductName=Rabiraag Bangla Keyboard
-VersionInfoProductVersion=3.0.0.0
+VersionInfoProductVersion=3.0.1.0
 UsedUserAreasWarning=no
 DefaultDirName={autopf}\RabiraagKeyboard
 DisableProgramGroupPage=yes
 DisableDirPage=yes
-OutputBaseFilename=Rabiraag_v3_Setup
+OutputBaseFilename=Rabiraag_v3.0.1_Setup
 
 ; Prevent false-positive heuristic flags
 Compression=lzma
@@ -81,13 +81,17 @@ Root: HKLM32; Subkey: "SYSTEM\CurrentControlSet\Control\Keyboard Layouts\a000044
 ; The InstallHelper Check prevents writing this key if the user opted out.
 Root: HKCU; Subkey: "Software\Microsoft\Windows\CurrentVersion\Run"; ValueType: string; ValueName: "RabiraagHelper"; ValueData: """{app}\rabiraag_helper.exe"""; Flags: uninsdeletevalue; Check: InstallHelper
 
+; --- State Tracking Cleanup ---
+Root: HKLM64; Subkey: "Software\Rabiraag"; Flags: uninsdeletekey; Check: Is64BitInstallMode
+Root: HKLM32; Subkey: "Software\Rabiraag"; Flags: uninsdeletekey; Check: not Is64BitInstallMode
+
 [Code]
 var
   FontPage, MaintenancePage: TWizardPage;
   KeyImage: TBitmapImage;
   NativeLabel, GlobalFooterLink, GitHubLink, GlobalFooterInfo, MaintenanceDesc: TNewStaticText;
   FontCheckBox, HelperCheckBox, UninstallFontsCheckBox: TCheckBox;
-  RepairRadio, UninstallRadio: TNewRadioButton;
+  RepairRadio, ReinstallRadio, UninstallRadio: TNewRadioButton;
   IsUpgrading: Boolean;
   IsSilentExit: Boolean;
   UninstallFontsWanted: Boolean;
@@ -95,22 +99,24 @@ var
 // ── Check functions called by [Files] and [Registry] ──────────────────────
 
 function IsLayoutInstalled: Boolean;
+var
+  ProdCode: String;
 begin
-  Result :=
-    RegKeyExists(HKLM64, 'SYSTEM\CurrentControlSet\Control\Keyboard Layouts\a0000445') or
-    RegKeyExists(HKLM32, 'SYSTEM\CurrentControlSet\Control\Keyboard Layouts\a0000445');
+  Result := False;
+  if RegQueryStringValue(HKLM64, 'SYSTEM\CurrentControlSet\Control\Keyboard Layouts\a0000445', 'Layout Product Code', ProdCode) then
+    if ProdCode = '{41a98474-b8b5-4f72-8114-bc4a031e7cc8}' then Result := True;
+  if RegQueryStringValue(HKLM32, 'SYSTEM\CurrentControlSet\Control\Keyboard Layouts\a0000445', 'Layout Product Code', ProdCode) then
+    if ProdCode = '{41a98474-b8b5-4f72-8114-bc4a031e7cc8}' then Result := True;
 end;
 
 function InstallFonts: Boolean;
 begin
-  Result := FontCheckBox.Checked or IsUpgrading;
+  Result := FontCheckBox.Checked;
 end;
 
 function InstallHelper: Boolean;
 begin
-  // During upgrade the helper is always refreshed (re-copied) so the
-  // checkbox state is irrelevant and we return True unconditionally.
-  Result := HelperCheckBox.Checked or IsUpgrading;
+  Result := HelperCheckBox.Checked;
 end;
 
 // ── Font removal ──────────────────────────────────────────────────────────
@@ -146,6 +152,7 @@ end;
 procedure UpdateMaintenanceButton;
 begin
   if RepairRadio.Checked then WizardForm.NextButton.Caption := 'Repair'
+  else if ReinstallRadio.Checked then WizardForm.NextButton.Caption := 'Re-install'
   else WizardForm.NextButton.Caption := 'Uninstall';
 end;
 
@@ -173,7 +180,9 @@ end;
 // ── Wizard initialisation ──────────────────────────────────────────────────
 
 procedure InitializeWizard;
-var ImageFileName: String;
+var 
+  ImageFileName: String;
+  prevHelper, prevFonts: Cardinal;
 begin
   IsUpgrading := IsLayoutInstalled;
   IsSilentExit := False;
@@ -196,7 +205,7 @@ begin
   NativeLabel := TNewStaticText.Create(FontPage);
   NativeLabel.Parent := FontPage.Surface;
   NativeLabel.Caption :=
-    'Rabiraag Bangla Keyboard v3.0 (Build 6202.26) by Bonanto' + #13#10#13#10 +
+    'Rabiraag Bangla Keyboard v3.0.1 (Build 6202.26, Experience 6202.5071.0) by Bonanto' + #13#10#13#10 +
     'This installation will deploy a native Windows layout. ' +
     'NO Background process unless you Install Helper (Recommended for Office 2024/365/Windows 11) and ' +
     'NO memory overhead, ensuring a seamless typing experience.';
@@ -242,16 +251,24 @@ begin
   RepairRadio.Parent := MaintenancePage.Surface;
   RepairRadio.Caption := 'Repair/Refresh (Re-registers and updates the taskbar layout)';
   RepairRadio.Left := ScaleX(10);
-  RepairRadio.Top := MaintenanceDesc.Top + ScaleY(30);
+  RepairRadio.Top := MaintenanceDesc.Top + ScaleY(25);
   RepairRadio.Width := MaintenancePage.SurfaceWidth;
   RepairRadio.Checked := True;
   RepairRadio.OnClick := @MaintenanceRadioClick;
+
+  ReinstallRadio := TNewRadioButton.Create(MaintenancePage);
+  ReinstallRadio.Parent := MaintenancePage.Surface;
+  ReinstallRadio.Caption := 'Re-install (Modify)';
+  ReinstallRadio.Left := ScaleX(10);
+  ReinstallRadio.Top := RepairRadio.Top + ScaleY(25);
+  ReinstallRadio.Width := MaintenancePage.SurfaceWidth;
+  ReinstallRadio.OnClick := @MaintenanceRadioClick;
 
   UninstallRadio := TNewRadioButton.Create(MaintenancePage);
   UninstallRadio.Parent := MaintenancePage.Surface;
   UninstallRadio.Caption := 'Completely remove the layout and settings from the system';
   UninstallRadio.Left := ScaleX(10);
-  UninstallRadio.Top := RepairRadio.Top + ScaleY(30);
+  UninstallRadio.Top := ReinstallRadio.Top + ScaleY(25);
   UninstallRadio.Width := MaintenancePage.SurfaceWidth;
   UninstallRadio.OnClick := @MaintenanceRadioClick;
 
@@ -292,6 +309,14 @@ begin
   GlobalFooterInfo.Font.Color := clGrayText;
   GlobalFooterInfo.Left := ScaleX(15);
   GlobalFooterInfo.Top := GlobalFooterLink.Top + ScaleY(16);
+
+  // Restore user preferences
+  if IsUpgrading then begin
+    if RegQueryDWordValue(HKEY_LOCAL_MACHINE, 'Software\Rabiraag', 'HelperInstalled', prevHelper) then
+      HelperCheckBox.Checked := (prevHelper = 1);
+    if RegQueryDWordValue(HKEY_LOCAL_MACHINE, 'Software\Rabiraag', 'FontsInstalled', prevFonts) then
+      FontCheckBox.Checked := (prevFonts = 1);
+  end;
 end;
 
 // ── Page visibility ────────────────────────────────────────────────────────
@@ -300,9 +325,11 @@ function ShouldSkipPage(PageID: Integer): Boolean;
 begin
   Result := False;
   if IsUpgrading then begin
-    if (PageID = FontPage.ID) or (PageID = wpLicense) or
-       (PageID = wpReady) or (PageID = wpSelectDir) then
+    if PageID = FontPage.ID then begin
+      Result := RepairRadio.Checked;
+    end else if (PageID = wpLicense) or (PageID = wpReady) or (PageID = wpSelectDir) then begin
       Result := True;
+    end;
   end else begin
     if PageID = MaintenancePage.ID then
       Result := True;
@@ -318,7 +345,9 @@ var
 begin
   Result := True;
   if IsUpgrading and (CurPageID = MaintenancePage.ID) then begin
-    if UninstallRadio.Checked then begin
+    if RepairRadio.Checked or ReinstallRadio.Checked then begin
+      Exec('taskkill.exe', '/F /IM rabiraag_helper.exe', '', SW_HIDE, ewWaitUntilTerminated, ResCode);
+    end else if UninstallRadio.Checked then begin
       if RegQueryStringValue(HKLM64, 'Software\Microsoft\Windows\CurrentVersion\Uninstall\RabiraagKeyboard_v3_is1', 'UninstallString', UninstallStr) or
          RegQueryStringValue(HKLM32, 'Software\Microsoft\Windows\CurrentVersion\Uninstall\RabiraagKeyboard_v3_is1', 'UninstallString', UninstallStr) then
       begin
@@ -350,6 +379,22 @@ var
   ResCode: Integer;
 begin
   if CurStep = ssPostInstall then begin
+
+    // Save user preferences and handle cleanup
+    if InstallHelper then begin
+      RegWriteDWordValue(HKEY_LOCAL_MACHINE, 'Software\Rabiraag', 'HelperInstalled', 1);
+    end else begin
+      RegWriteDWordValue(HKEY_LOCAL_MACHINE, 'Software\Rabiraag', 'HelperInstalled', 0);
+      
+      // If opted out during a Re-install, actively delete the orphaned file and auto-start key
+      DeleteFile(ExpandConstant('{app}\rabiraag_helper.exe'));
+      RegDeleteValue(HKEY_CURRENT_USER, 'Software\Microsoft\Windows\CurrentVersion\Run', 'RabiraagHelper');
+    end;
+
+    if InstallFonts then
+      RegWriteDWordValue(HKEY_LOCAL_MACHINE, 'Software\Rabiraag', 'FontsInstalled', 1)
+    else
+      RegWriteDWordValue(HKEY_LOCAL_MACHINE, 'Software\Rabiraag', 'FontsInstalled', 0);
 
     // Register the keyboard layout for the current user
     PSCommand :=
